@@ -1,4 +1,4 @@
-package dturcan.Gmail.PageObjects;
+package dturcan.gmail.pageobjects;
 
 /**
  * Created by dturcan on 9/27/2016.
