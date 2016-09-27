@@ -1,4 +1,4 @@
-package oclungu.helpers;
+package oclungu.gmail.helpers;
 
 public class ActionHelper {
 }
