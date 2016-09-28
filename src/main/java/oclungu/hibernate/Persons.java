@@ -1,29 +1,29 @@
 package oclungu.hibernate;
 
-public class Person {
+public class Persons {
 
-    private int personID;
+    private int personId;
     private String lastName;
     private String firstName;
     private String address;
     private String city;
 
-    public Person() {
+    public Persons() {
     }
 
-    public Person(String lastName, String firstName, String address, String city) {
+    public Persons(String lastName, String firstName, String address, String city) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
         this.city = city;
     }
 
-    public int getPersonID() {
-        return personID;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setPersonID(int personID) {
-        this.personID = personID;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getLastName() {

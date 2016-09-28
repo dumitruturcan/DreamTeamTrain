@@ -13,18 +13,9 @@ public class ManagePersons {
 
     private static SessionFactory factory;
 
-    public static void main(String[] args) {
-
-        try {
+    public static void main(String[] args) throws Exception {
 
             factory = new Configuration().configure().buildSessionFactory();
-
-        } catch (Throwable throwable) {
-
-            System.err.println("Failed to create sessionFactory object." + throwable);
-            throw new ExceptionInInitializerError(throwable);
-
-        }
 
         ManagePersons managePersons = new ManagePersons();
 
@@ -54,8 +45,8 @@ public class ManagePersons {
         try {
 
             transaction = session.beginTransaction();
-            Person person = new Person(lastName, firstName, address, city);
-            personId = (Integer) session.save(person);
+            Persons persons = new Persons(lastName, firstName, address, city);
+            personId = (Integer) session.save(persons);
             transaction.commit();
 
         } catch (HibernateException e) {
@@ -82,13 +73,13 @@ public class ManagePersons {
         try {
 
             transaction = session.beginTransaction();
-            List persons = session.createQuery("FROM Persons").list();
+            List persons = session.createQuery("from Persons").list();
 
             for (Iterator iterator = persons.iterator(); iterator.hasNext(); ) {
 
-                Employee employee = (Employee) iterator.next();
-                System.out.println("Last Name: " + employee.getLastName() + "\tFirst Name: " + employee.getFirstName() +
-                        "\tAddress: " + employee.getAddress() + "\tCity: " + employee.getCity());
+                Persons person = (Persons) iterator.next();
+                System.out.println("Last Name: " + person.getLastName() + "\tFirst Name: " + person.getFirstName() +
+                        "\tAddress: " + person.getAddress() + "\tCity: " + person.getCity());
 
             }
 
@@ -100,8 +91,8 @@ public class ManagePersons {
             e.printStackTrace();
 
         } finally {
-
-            session.close();
+            
+            factory.close();
 
         }
 
