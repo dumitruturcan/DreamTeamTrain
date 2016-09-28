@@ -10,11 +10,11 @@
         </property>
 
         <property name="hibernate.connection.driver_class">
-            com.microsoft.sqlserver.jdbc.SQLServerD‌​river
+            com.microsoft.sqlserver.jdbc.SQLServerDriver
         </property>
 
         <property name="hibernate.connection.url">
-            MDCH-QA-TRAIN2
+            jdbc:sqlserver://MDCH-QA-TRAIN2
         </property>
         <property name="hibernate.connection.username">
             sa
@@ -22,7 +22,6 @@
         <property name="hibernate.connection.password">
             MDCH-TRAIN2SA
         </property>
-
         <!-- List of XML mapping files -->
         <mapping resource="Persons.hbm.xml"/>
 
