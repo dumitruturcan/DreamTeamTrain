@@ -1,11 +1,8 @@
 package dturcan.Hibernate;
 
-/**
- * Created by dturcan on 9/27/2016.
- */
 public class Persons {
 
-    private int personid;
+    private Integer personid;
     private String lastname;
     private String firstname;
     private String address;
@@ -21,14 +18,33 @@ public class Persons {
 
     }
 
-    public  int getPersonid() {
+    public Persons(Integer personid, String lastname, String firstname, String address, String city){
+
+        this.personid = personid;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.address = address;
+        this.city = city;
+
+    }
+
+    public Persons (){
+
+        personid = null;
+        lastname = null;
+        firstname = null;
+        address = null;
+        city = null;
+
+    }
+
+    public Integer getPersonid() {
         return personid;
     }
 
     public String getLastname() {
         return lastname;
     }
-
     public String getFirstname() {
         return firstname;
     }

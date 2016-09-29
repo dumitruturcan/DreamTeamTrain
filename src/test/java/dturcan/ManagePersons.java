@@ -7,23 +7,36 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
-import java.util.Date;
 import java.util.Iterator;
 
-/**
- * Created by dturcan on 9/28/2016.
- */
 public class ManagePersons {
 
     private static SessionFactory factory;
+
+
 
     public static void main(String[] args) throws Exception {
 
         factory = new Configuration().configure().buildSessionFactory();
 
+        Persons person = new Persons("Turcan","Dumitru", "Chisinau", "Adresa");
+
         ManagePersons managePersons = new ManagePersons();
 
+        System.out.println("Adding a person");
+
+        //managePersons.addPerson(person);
+
         managePersons.listPersons();
+
+        System.out.println("Deleting a person");
+
+        managePersons.deletePerson(24);
+
+        managePersons.listPersons();
+
+        factory.close();
+
     }
 
 
@@ -40,15 +53,56 @@ public class ManagePersons {
         for (Iterator i = persons.iterator(); i.hasNext();){
 
             Persons person = (Persons) i.next();
-            System.err.print("First Name: ");
-            System.out.println(person.getFirstname());
-            System.err.print("Last Name: ");
-            System.out.println(person.getLastname());
-            System.err.print("Address: ");
-            System.out.println(person.getAddress());
-            System.err.print("City: ");
-            System.out.println(person.getCity());
+
+            System.out.println("Person ID("+person.getPersonid()+")");
+
+            System.out.println("First Name: "+ person.getFirstname());
+
+            System.out.println("Last Name: "+person.getLastname());
+
+            System.out.println("Address: "+person.getAddress());
+
+            System.out.println("City: "+ person.getCity());
+
+            System.out.println("---------------------------------------------");
         }
+
+        session.close();
+
+    }
+
+    public void addPerson(Persons person) throws Exception{
+
+        Integer id = null;
+
+        Session session = factory.openSession();
+
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+
+        id = (Integer) session.save(person);
+
+        System.out.println("Added user with ID ("+id+")");
+
+        transaction.commit();
+
+        session.close();
+    }
+
+    public void deletePerson(Integer person){
+
+        Session session = factory.openSession();
+
+        Transaction transaction=null;
+
+        transaction = session.beginTransaction();
+
+        Persons persons = (Persons) session.get(Persons.class, person);
+
+        session.delete(persons);
+
+        transaction.commit();
 
     }
 
