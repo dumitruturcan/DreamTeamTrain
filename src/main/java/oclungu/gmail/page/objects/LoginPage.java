@@ -1,6 +1,7 @@
 package oclungu.gmail.page.objects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,7 +32,9 @@ public class LoginPage {
 
     public WebElement getLoginField() {
 
-        webDriverWait.pollingEvery(10, TimeUnit.SECONDS)
+        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(loginField));
         return webDriver.findElement(loginField);
 
@@ -39,7 +42,9 @@ public class LoginPage {
 
     public WebElement getNextButton() {
 
-        webDriverWait.pollingEvery(10, TimeUnit.SECONDS)
+        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(nextButton));
         return webDriver.findElement(nextButton);
 
@@ -47,7 +52,9 @@ public class LoginPage {
 
     public WebElement getPasswordField() {
 
-        webDriverWait.pollingEvery(10, TimeUnit.SECONDS)
+        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(passwordField));
         return webDriver.findElement(passwordField);
 
@@ -55,7 +62,9 @@ public class LoginPage {
 
     public WebElement getSignInButton() {
 
-        webDriverWait.pollingEvery(10, TimeUnit.SECONDS)
+        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(signInButton));
         return webDriver.findElement(signInButton);
 
@@ -63,7 +72,9 @@ public class LoginPage {
 
     public WebElement getRememberCheckbox() {
 
-        webDriverWait.pollingEvery(10, TimeUnit.SECONDS)
+        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(rememberCheckbox));
         return webDriver.findElement(rememberCheckbox);
 

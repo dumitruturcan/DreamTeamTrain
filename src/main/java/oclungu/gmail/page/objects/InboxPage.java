@@ -1,6 +1,7 @@
 package oclungu.gmail.page.objects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,7 +28,9 @@ public class InboxPage {
 
     public WebElement getComposeButton() {
 
-        webDriverWait.pollingEvery(10, TimeUnit.SECONDS)
+        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(composeButton));
         return webDriver.findElement(composeButton);
 
