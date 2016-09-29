@@ -32,33 +32,33 @@ public class LogInToGmailSteps {
 
     }
 
-    @Given("^User access gmail.$")
-    public void User_access_gmail() throws Throwable {
+    @Given("^User is on Login page$")
+    public void User_is_on_Login_page() throws Throwable {
 
         webDriver.get("gmail.com");
 
     }
 
-    @When("^User provide user name as \"([^\"]*)\".$")
-    public void User_provide_user_name_as_(String arg1) throws Throwable {
+    @When("^User provide user name as \"([^\"]*)\"$")
+    public void User_provide_user_name_as(String arg1) throws Throwable {
 
         loginPage.getLoginField().sendKeys(arg1);
 
     }
 
-    @When("^User click next button.$")
+    @When("^User click next button$")
     public void User_click_next_button() throws Throwable {
 
         loginPage.getNextButton().click();
 
     }
 
-    @When("^User provide password name as \"([^\"]*)\".$")
-    public void User_provide_password_name_as_(String arg1) throws Throwable {
+    @When("^User provide password name as \"([^\"]*)\"$")
+    public void User_provide_password_name_as(String arg1) throws Throwable {
 
         loginPage.getPasswordField().sendKeys(arg1);
 
-        if (loginPage.getRememberCheckbox().isEnabled()) {
+        if (loginPage.getRememberCheckbox().isSelected()) {
 
             loginPage.getRememberCheckbox().click();
 
@@ -66,14 +66,14 @@ public class LogInToGmailSteps {
 
     }
 
-    @When("^User click sign in button.$")
+    @When("^User click sign in button$")
     public void User_click_sign_in_button() throws Throwable {
 
         loginPage.getSignInButton().click();
 
     }
 
-    @Then("^User should be logged in.$")
+    @Then("^User should be logged in$")
     public void User_should_be_logged_in() throws Throwable {
 
         inboxPage.getComposeButton().isDisplayed();
