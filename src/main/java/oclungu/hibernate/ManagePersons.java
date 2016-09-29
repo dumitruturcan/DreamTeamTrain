@@ -15,24 +15,27 @@ public class ManagePersons {
 
     public static void main(String[] args) throws Exception {
 
-            factory = new Configuration().configure().buildSessionFactory();
+        factory = new Configuration().configure().buildSessionFactory();
 
         ManagePersons managePersons = new ManagePersons();
 
       /* Add few employee records in database */
-        //Integer empID1 = managePersons.addPerson("Zara", "Ali", 1000);
+        //Integer person1 = managePersons.addPerson("LastNameTest1", "FirstNameTest1", "AddressTest1", "CityTest1");
+        //Integer person2 = managePersons.addPerson("LastNameTest2", "FirstNameTest2", "AddressTest2", "CityTest2");
 
       /* List down all the employees */
-        managePersons.getPersonsList();
+        //managePersons.getPersonsList();
 
       /* Update employee's records */
         //managePersons.updateEmployee(empID1, 5000);
 
       /* Delete an employee from the database */
-        //managePersons.deletePerson(empID2);
+        //managePersons.deletePerson(22);
 
       /* List down new list of the employees */
-        // managePersons.getPersonsList();
+        managePersons.getPersonsList();
+
+        factory.close();
 
     }
 
@@ -78,8 +81,10 @@ public class ManagePersons {
             for (Iterator iterator = persons.iterator(); iterator.hasNext(); ) {
 
                 Persons person = (Persons) iterator.next();
-                System.out.println("Last Name: " + person.getLastName() + "\tFirst Name: " + person.getFirstName() +
-                        "\tAddress: " + person.getAddress() + "\tCity: " + person.getCity());
+                System.out.println("Last Name: " + person.getLastName() +
+                        "\tFirst Name: " + person.getFirstName() +
+                        "\tAddress: " + person.getAddress() +
+                        "\tCity: " + person.getCity());
 
             }
 
@@ -91,8 +96,8 @@ public class ManagePersons {
             e.printStackTrace();
 
         } finally {
-            
-            factory.close();
+
+            session.close();
 
         }
 
@@ -107,9 +112,9 @@ public class ManagePersons {
         try {
 
             transaction = session.beginTransaction();
-            Employee employee = (Employee) session.get(Employee.class, personId);
-            employee.setCity(city);
-            session.update(employee);
+            Persons persons = (Persons) session.get(Persons.class, personId);
+            persons.setCity(city);
+            session.update(persons);
             transaction.commit();
 
         } catch (HibernateException e) {
@@ -134,8 +139,8 @@ public class ManagePersons {
         try {
 
             transaction = session.beginTransaction();
-            Employee employee = (Employee) session.get(Employee.class, personId);
-            session.delete(employee);
+            Persons persons = (Persons) session.get(Persons.class, personId);
+            session.delete(persons);
             transaction.commit();
 
         } catch (HibernateException e) {
