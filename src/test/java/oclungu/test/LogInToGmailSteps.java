@@ -10,6 +10,8 @@ import oclungu.gmail.page.objects.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.io.File;
+
 public class LogInToGmailSteps {
 
     private WebDriver webDriver;
@@ -20,6 +22,8 @@ public class LogInToGmailSteps {
     @Before
     public void setUp() {
 
+        File file = new File("C:/Users/oclungu/Downloads/IEDriverServer_Win32_2.53.1/IEDriverServer.exe");
+        System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
         webDriver = new InternetExplorerDriver();
 
         loginPage = new LoginPage(webDriver);
