@@ -1,4 +1,4 @@
-package dturcan;
+package dturcan.hibernate;
 
 import dturcan.Hibernate.Persons;
 import org.hibernate.Session;
@@ -23,17 +23,15 @@ public class ManagePersons {
 
         ManagePersons managePersons = new ManagePersons();
 
-        System.out.println("Adding a person");
-
         //managePersons.addPerson(person);
 
         managePersons.listPersons();
 
-        System.out.println("Deleting a person");
+       // System.out.println("Deleting a person");
 
-        managePersons.deletePerson(24);
+        //managePersons.deletePerson(24);
 
-        managePersons.listPersons();
+        //managePersons.listPersons();
 
         factory.close();
 
