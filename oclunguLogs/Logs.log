@@ -1,0 +1,16 @@
+2016-09-30 12:51:44 [--INFO --] [LoginPage:getLoginField:36] --- Looking for Log In Field.
+2016-09-30 12:51:44 [--INFO --] [LoginPage:getLoginField:38] --- Log In Field was found.
+2016-09-30 12:51:45 [--INFO --] [ActionHelper:sendKeysToTheElement:23] --- Fill the element.
+2016-09-30 12:51:45 [--INFO --] [ActionHelper:sendKeysToTheElement:25] --- Element was filled.
+2016-09-30 12:51:45 [--INFO --] [LoginPage:getNextButton:45] --- Looking for Next Button.
+2016-09-30 12:51:46 [--INFO --] [LoginPage:getNextButton:47] --- Next Button was found.
+2016-09-30 12:51:46 [--INFO --] [ActionHelper:clickTheElement:15] --- Click the element.
+2016-09-30 12:51:47 [--INFO --] [ActionHelper:clickTheElement:17] --- Element was clicked.
+2016-09-30 12:51:47 [--INFO --] [LoginPage:getPasswordField:54] --- Looking for Password Field.
+2016-09-30 12:51:47 [--INFO --] [LoginPage:getPasswordField:56] --- Password Field was found.
+2016-09-30 12:51:48 [--INFO --] [LoginPage:getRememberCheckbox:72] --- Looking for Remember Checkbox.
+2016-09-30 12:51:48 [--INFO --] [LoginPage:getRememberCheckbox:74] --- Remember Checkbox was found.
+2016-09-30 12:51:48 [--INFO --] [LoginPage:getSignInButton:63] --- Looking for Sign In Button.
+2016-09-30 12:51:49 [--INFO --] [LoginPage:getSignInButton:65] --- Sign In Button was found.
+2016-09-30 12:51:57 [--INFO --] [InboxPage:getComposeButton:32] --- Looking for Compose Button.
+2016-09-30 12:51:57 [--INFO --] [InboxPage:getComposeButton:34] --- Compose Button was found.

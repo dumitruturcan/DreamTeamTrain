@@ -1,18 +1,18 @@
 package oclungu.gmail.page.objects;
 
+import oclungu.gmail.helpers.WaitHelper;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 public class LoginPage {
 
+    private Logger logger = Logger.getLogger(LoginPage.class);
     private WebDriver webDriver;
     private WebDriverWait webDriverWait;
+    private WaitHelper waitHelper;
 
     private By loginField = By.id("Email");
     private By nextButton = By.id("next");
@@ -27,55 +27,51 @@ public class LoginPage {
 
         this.webDriver = webDriver;
         this.webDriverWait = new WebDriverWait(webDriver, 10);
+        this.waitHelper = new WaitHelper(webDriver);
 
     }
 
     public WebElement getLoginField() {
 
-        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.elementToBeClickable(loginField));
+        logger.info("Looking for Log In Field.");
+        waitHelper.waitForElement(loginField);
+        logger.info("Log In Field was found.");
         return webDriver.findElement(loginField);
 
     }
 
     public WebElement getNextButton() {
 
-        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.elementToBeClickable(nextButton));
+        logger.info("Looking for Next Button.");
+        waitHelper.waitForElement(nextButton);
+        logger.info("Next Button was found.");
         return webDriver.findElement(nextButton);
 
     }
 
     public WebElement getPasswordField() {
 
-        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.elementToBeClickable(passwordField));
+        logger.info("Looking for Password Field.");
+        waitHelper.waitForElement(passwordField);
+        logger.info("Password Field was found.");
         return webDriver.findElement(passwordField);
 
     }
 
     public WebElement getSignInButton() {
 
-        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.elementToBeClickable(signInButton));
+        logger.info("Looking for Sign In Button.");
+        waitHelper.waitForElement(signInButton);
+        logger.info("Sign In Button was found.");
         return webDriver.findElement(signInButton);
 
     }
 
     public WebElement getRememberCheckbox() {
 
-        webDriverWait.withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.elementToBeClickable(rememberCheckbox));
+        logger.info("Looking for Remember Checkbox.");
+        waitHelper.waitForElement(rememberCheckbox);
+        logger.info("Remember Checkbox was found.");
         return webDriver.findElement(rememberCheckbox);
 
     }

@@ -5,6 +5,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import oclungu.gmail.helpers.ActionHelper;
 import oclungu.gmail.page.objects.InboxPage;
 import oclungu.gmail.page.objects.LoginPage;
 import org.openqa.selenium.WebDriver;
@@ -14,17 +15,19 @@ import java.io.File;
 
 public class LogInToGmailSteps {
 
+    private ActionHelper actionHelper;
     private WebDriver webDriver;
-
     private LoginPage loginPage;
     private InboxPage inboxPage;
 
     @Before
     public void setUp() {
 
-        File file = new File("C:/Users/oclungu/Downloads/IEDriverServer_Win32_2.53.1/IEDriverServer.exe");
+        File file = new File("./IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
         webDriver = new InternetExplorerDriver();
+
+        actionHelper = new ActionHelper();
 
         loginPage = new LoginPage(webDriver);
         inboxPage = new InboxPage(webDriver);
@@ -42,14 +45,14 @@ public class LogInToGmailSteps {
     @When("^User provide user name as \"([^\"]*)\"$")
     public void User_provide_user_name_as(String arg1) throws Throwable {
 
-        loginPage.getLoginField().sendKeys(arg1);
+        actionHelper.sendKeysToTheElement(loginPage.getLoginField(), arg1);
 
     }
 
     @When("^User click next button$")
     public void User_click_next_button() throws Throwable {
 
-        loginPage.getNextButton().click();
+        actionHelper.clickTheElement(loginPage.getNextButton());
 
     }
 
