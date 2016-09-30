@@ -15,15 +15,16 @@ import java.io.File;
 
 public class LogInToGmailSteps {
 
-    private ActionHelper actionHelper;
     private WebDriver webDriver;
+
+    private ActionHelper actionHelper;
     private LoginPage loginPage;
     private InboxPage inboxPage;
 
     @Before
     public void setUp() {
 
-        File file = new File("./IEDriverServer.exe");
+        File file = new File("C:/Users/oclungu/Downloads/IEDriverServer_Win32_2.53.1/IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
         webDriver = new InternetExplorerDriver();
 
